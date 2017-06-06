@@ -4,21 +4,31 @@ class UsersController < ApplicationController
   end
 
   def create
-    byebug
-    @user = User.new(name: params[:user][:name], email: params[:user][:name])
-    redirect_to show_path
+    @user = User.create(user_params)
+    redirect_to users_path
+  end
+
+  def index
+    @users = User.all
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
   end
 
   def destroy
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:name, :email)
   end
 
 end
