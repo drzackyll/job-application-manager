@@ -8,8 +8,11 @@ class ApplicationsController < ApplicationController
     redirect_to applications_path
   end
 
-  def show
+  def index
     @applications = Application.all
+  end
+
+  def show
   end
 
   def edit
